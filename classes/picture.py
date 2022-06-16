@@ -8,12 +8,16 @@ import os.path
 class CreateTaskPhoto(object):
     def __init__(self, number_task: int, name_user: str):
         """создаёт картинку с заданием, по номеру задания и имени пользователя"""
-        self.text_task = open(f'data_for_test_task/tasks_text/{number_task}.txt', 'r').read()
+        try:
+            self.text_task = open(f'data_for_test_task/tasks_text/{number_task}.txt',
+                                  'r').read() + '\n\n\ninst: lev_repet\ngithub: Lev-Reyn'
+        except Exception as ex:
+            self.text_task = open(f'data_for_test_task/tasks_text/finish.txt',
+                                  'r').read() + '\n\n\ninst: lev_repet\ngithub: Lev-Reyn'
         self.neme_user = name_user
-        self.im = Image.new('RGB', (1600, 100 + 50 * self.text_task.count('\n')), color=('#ffdd87'))
+        self.im = Image.new('RGB', (1600, 100 + 45 * self.text_task.count('\n')), color=('#ffdd87'))
         self.font = ImageFont.truetype(  # шрифт
-            '/Users/levreyn/Yandex.Disk.localized/python otr/создание изображений/шрифты/5/ofont.ru_RussianPunk.ttf',
-            size=40)  # добавляем шрифт
+            'additionalFiles/fonts/ofont.ru_Roboto.ttf', size=40)  # добавляем шрифт
         self.draw_text = ImageDraw.Draw(self.im)
         self.draw_text.text(
             (20, 50),
@@ -23,7 +27,9 @@ class CreateTaskPhoto(object):
         )
         # Откроет изображение в новом окне
         # im.show()
+
         self.im.save(f'data_for_test_task/tasks_photos/test{number_task}.png')
+
         self.path_task_photo = f'data_for_test_task/tasks_photos/test{number_task}.png'
 
     def delete_photo(self):

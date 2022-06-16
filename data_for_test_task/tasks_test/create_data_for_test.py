@@ -11,14 +11,14 @@ def task1(a: int) -> str:  # 1
         return 'Хм, ну и мелкое конечно'
 
 
-def task2(a: int) -> str: # 2
+def task2(a: int) -> str:  # 2
     k = 1
     for i in range(1, int(a) + 1):
         k *= i
     return str(k)
 
 
-def task3(n: int): # 3
+def task3(n: int):  # 3
     rainbow = ("Красный", "Оранжевый", "Желтый", "Зеленый", "Голубой", "Синий", "Фиолетовый")
     if n > 7:
         return "Радуга состоит только из семи цветов"
@@ -29,7 +29,7 @@ def task3(n: int): # 3
         return lst
 
 
-def task4(a: int) -> list: # 4
+def task4(a: int) -> list:  # 4
     lst = []
     for i in range(1, a + 1):
         if i % 10 == 1 and i != 11:
@@ -42,12 +42,41 @@ def task4(a: int) -> list: # 4
     return lst
 
 
+def task5(a: int) -> bool:
+    """проверка на не чётность"""
+    if a % 2 == 1:
+        return True
+    else:
+        return False
+
+
+def task6(a: int) -> list:
+    "возвращает список квадратов от 1 до a включительно "
+    lst = []
+    for i in range(1, a + 1):
+        lst.append(i ** 2)
+    return lst
+
+
+def task7(a: int) -> list:
+    "возвращает список чисел до a включительно, которые являются степенями тройки"
+    lst = []
+    i = 0
+    while True:
+        if 3 ** i <= a:
+            lst.append(3 ** i)
+        else:
+            break
+        i += 1
+    return lst
+
+
 # lst = []
 # start = time.time()
-# for a in range(-2000000000, 9000000000 + 1, 1000000000):
-#     d = {(a): task1(a)}
+# for a in range(-7, 400, 29):
+#     d = {(a): task6(a)}
 #     lst.append(d)
 # print(time.time() - start)
 # print(lst)
-# with open('test1.json', 'w') as file:
+# with open('test6.json', 'w') as file:
 #     json.dump(lst, file, indent=4, ensure_ascii=False)
