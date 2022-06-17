@@ -16,7 +16,7 @@ async def start_process_command(message: types.Message):
     await message.delete()
     # возможно при команде старт я сделаю полный презапуск, а возможно нет
     await bot.send_message(message.from_user.id, 'типо тут задание (обязательно вводить функции)')
-    task = CreateTaskPhoto(number_task=1, name_user=message.from_user.id)  # лучше бы потом вставить id пользователя
+    task = CreateTaskPhoto(number_task='1', name_user=message.from_user.id)  # лучше бы потом вставить id пользователя
     await bot.send_photo(message.from_user.id, photo=open(task.path_task_photo, 'rb'))
     task.delete_photo()
 

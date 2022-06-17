@@ -6,12 +6,12 @@ import os.path
 
 
 class CreateTaskPhoto(object):
-    def __init__(self, number_task: int, name_user: str):
+    def __init__(self, number_task: str, name_user: str):
         """создаёт картинку с заданием, по номеру задания и имени пользователя"""
         try:
             self.text_task = open(f'data_for_test_task/tasks_text/{number_task}.txt',
                                   'r').read() + '\n\n\ninst: lev_repet\ngithub: Lev-Reyn'
-        except Exception as ex:
+        except Exception:
             self.text_task = open(f'data_for_test_task/tasks_text/finish.txt',
                                   'r').read() + '\n\n\ninst: lev_repet\ngithub: Lev-Reyn'
         self.neme_user = name_user
