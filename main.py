@@ -3,7 +3,7 @@ from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
 from additionalFiles.config import token
-from classes.main_funcs_oop_try import TestTask, Remember
+from classes.main_funcs_oop_try import TestTask
 from classes.picture import CreateTaskPhoto  # класс для работы с созданием фотографий с заданиями
 
 bot = Bot(token, parse_mode=types.ParseMode.HTML)
@@ -18,7 +18,7 @@ async def start_process_command(message: types.Message):
     await bot.send_message(message.from_user.id, 'типо тут задание (обязательно вводить функции)')
     task = CreateTaskPhoto(number_task='1', name_user=message.from_user.id)  # лучше бы потом вставить id пользователя
     await bot.send_photo(message.from_user.id, photo=open(task.path_task_photo, 'rb'))
-    task.delete_photo()
+    # task.delete_photo()  # пока что не удаляем
 
 
 @dp.message_handler()

@@ -10,7 +10,7 @@ class CreateTaskPhoto(object):
         """создаёт картинку с заданием, по номеру задания и имени пользователя"""
         try:
             self.text_task = open(f'data_for_test_task/tasks_text/{number_task}.txt',
-                                  'r').read() + '\n\n\ninst: lev_repet\ngithub: Lev-Reyn'
+                              'r').read() + '\n\n\ninst: lev_repet\ngithub: Lev-Reyn'
         except Exception:
             self.text_task = open(f'data_for_test_task/tasks_text/finish.txt',
                                   'r').read() + '\n\n\ninst: lev_repet\ngithub: Lev-Reyn'
@@ -27,8 +27,9 @@ class CreateTaskPhoto(object):
         )
         # Откроет изображение в новом окне
         # im.show()
-
+        print('lol---------')
         self.im.save(f'data_for_test_task/tasks_photos/test{number_task}.png')
+        # self.im.save(f'test{number_task}.png')
 
         self.path_task_photo = f'data_for_test_task/tasks_photos/test{number_task}.png'
 
