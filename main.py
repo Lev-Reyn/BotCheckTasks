@@ -1,4 +1,5 @@
 """сейчас я в TestBranchMyBotTaskV1"""
+
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
@@ -18,7 +19,7 @@ async def start_process_command(message: types.Message):
     await bot.send_message(message.from_user.id, 'типо тут задание (обязательно вводить функции)')
     task = CreateTaskPhoto(number_task='1', name_user=message.from_user.id)  # лучше бы потом вставить id пользователя
     await bot.send_photo(message.from_user.id, photo=open(task.path_task_photo, 'rb'))
-    # task.delete_photo()  # пока что не удаляем
+    task.delete_photo()  # пока что не удаляем
 
 
 @dp.message_handler()
@@ -45,7 +46,8 @@ async def fill_in_the_schedule_process_message(message: types.Message):
     await bot.send_message(message.from_user.id, f'{p.resultText()}')
     if p.result_test[0]:
         task = CreateTaskPhoto(p.tasks_done + 1, message.from_user.id)  # создаём фотографию с заданием
-        await bot.send_photo(message.from_user.id, photo=open(task.path_task_photo, 'rb'))  # отправляем фотографию с заданием
+        await bot.send_photo(message.from_user.id,
+                             photo=open(task.path_task_photo, 'rb'))  # отправляем фотографию с заданием
         task.delete_photo()  # удаляем фотографию с заданием
 
 

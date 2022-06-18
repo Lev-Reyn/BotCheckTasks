@@ -34,7 +34,7 @@ class TestTask(Remember):
 
     def testCod(self) -> tuple:
         """запускаем тестирование кода """
-        print(self.answers)
+        print(self.answers)  # просто для того что бы смотреть, то ли задание проверяется сейчас
         if 'input()' in self.cod:
             self.result_test = (False, 'в функции не должно быть input()')
             return (False, 'в функции не должно быть input()')
@@ -84,7 +84,7 @@ class TestTask(Remember):
                     except TimeoutException as e:
                         self.result_test = (False, "Timed out!  СЛИШКОМ ДОЛГО работает")
                         return (False, "Timed out!  СЛИШКОМ ДОЛГО работает")
-                    if your_cod_output != test_dict[test_valueKey]:
+                    if str(your_cod_output) != str(test_dict[test_valueKey]):
                         if i < 5:
                             response_to_the_user = f"тест {i + 1}\nтестовое значение: {test_valueKey}\n ответ твоего скрипта: {your_cod_output}\n" \
                                                    f"правильный ответ: {test_dict[test_valueKey]}"
